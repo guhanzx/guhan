@@ -25,17 +25,21 @@ async def start(bot, update):
         
         caption = file_caption if file_caption != ("" or None) else ("<code>" + file_name + "</code>")
         try:
-            user = await bot.get_chat_member(update_channel, update.chat.id)
-            if user.status == "kicked out":
-               await update.reply_text("😔 Sorry Dude, You are **🅱︎🅰︎🅽︎🅽︎🅴︎🅳︎ 🤣🤣🤣**")
-               return
-        except UserNotParticipant:
-            #await update.reply_text(f"Join @{update_channel} To Use Me")
-            await update.reply_text(
-                text="<b>🔊 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 🤭.\n\nനിങ്ങൾക്ക് മൂവീസ് വേണോ? എങ്കിൽ തായെ കാണുന്ന ഞങ്ങളുടെ മെയിൻ ചാനലിൽ ജോയിൻ ചെയ്യുക.😂\nഎന്നിട്ട് ഗ്രൂപ്പിൽ പോയി വീണ്ടും മൂവിയിൽ ക്ലിക് ചെയ്ത് start കൊടുത്തു നോക്കൂ..!😁</b>",
-                reply_markup=InlineKeyboardMarkup([
-                    [ InlineKeyboardButton(text=" 💢 𝙹𝚘𝚒𝚗 𝙼𝚢 𝚄𝚙𝚍𝚊𝚝𝚎𝚜 𝙲𝚑𝚊𝚗𝚗𝚎𝚕 💢 ", url=f"https://t.me/Tamilblasters3k")]
-              ])
+            await update.reply_cached_media(
+                file_id,
+                quote=True,
+                caption = caption,
+                parse_mode="html",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton
+                                (
+                                    'Developers', url="https://t.me/CrazyBotsz"
+                                )
+                        ]
+                    ]
+                )
             )
         except Exception as e:
             await update.reply_text(f"<b>Error:</b>\n<code>{e}</code>", True, parse_mode="html")
@@ -43,7 +47,7 @@ async def start(bot, update):
         return
 
     buttons = [[
-        InlineKeyboardButton('Channel 📣', url='https://t.me/Tamilblasters3k'),
+        InlineKeyboardButton('Channel 📣', url='https://t.me/CrazyBotsz'),
         InlineKeyboardButton('Group 👥', url ='https://t.me/Tentkottagroup')
     ],[
         InlineKeyboardButton('Help ⚙', callback_data="help")
